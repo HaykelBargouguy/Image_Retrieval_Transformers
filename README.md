@@ -1,64 +1,61 @@
 # Training Vision Transformers for Image Retrieval
- 
-- (Unofficial) PyTorch implementation of [Training Vision Transformers for Image Retrieval](https://arxiv.org/abs/2102.05644)(El-Nouby, Alaaeldin, et al. 2021).
-- I have not yet achieved exactly the same results as reported in the paper(Differential entropy regularization does not have much effect on In-shop and SOP datasets).
+
+- (Unofficial) PyTorch implementation of [Training Vision Transformers for Image Retrieval](https://arxiv.org/abs/2102.05644) (El-Nouby, Alaaeldin, et al. 2021).
+- I have not yet achieved exactly the same results as reported in the paper (Differential entropy regularization does not have much effect on In-shop and SOP datasets).
 
 <img src="assets/img.png" height="250px">
 
-## Requirements
+## Steps to Run the Project
 
-```bash
-# Python 3.7
-pip install -r requirements.txt
-```
+1. **Clone the Repository**:
+
+   ```bash
+   git clone git@github.com:HaykelBargouguy/Image_Retrieval_Transformers.git
+   ```
+
+2. **Create a Virtual Environment**:
+
+   ```bash
+   python -m venv venv
+   ```
+
+3. **Activate the Virtual Environment**:
+
+   - On Windows:
+     ```bash
+     venv\Scripts\activate
+     ```
+   - On macOS/Linux:
+     ```bash
+     source venv/bin/activate
+     ```
+
+4. **Install the Required Packages**:
+
+   ```bash
+   pip install -r requirements1.txt
+   ```
 
 ## Training
 
-- See `scripts/train.*.sh`  
+5. **Run the Training Script**:
 
+   To train on the CUB-200-2011 dataset:
+   
+   ```bash
+   python main.py \
+     --model deit_small_distilled_patch16_224 \
+     --max-iter 2000 \
+     --dataset cub200 \
+     --data-path /data/CBIR_dataset \
+     --rank 1 2 4 8 \
+     --lambda-reg 0.7
+   ```
 
-### [CUB-200-2011](http://www.vision.caltech.edu/datasets/cub_200_2011/)
-```bash
-# CUB-200-2011
-python main.py \
-  --model deit_small_distilled_patch16_224 \
-  --max-iter 2000 \
-  --dataset cub200 \
-  --data-path /data/CUB_200_2011 \
-  --rank 1 2 4 8 \
-  --lambda-reg 0.7
-```
+6. **Get the Logs and Evaluation Results**:
 
-### [Stanford Online Products](https://cvgl.stanford.edu/projects/lifted_struct/)
+   - After running the training, logs and evaluation results will be stored in the `/logs/` folder. Check this directory for detailed training and evaluation metrics.
 
-```bash
-# Stanford Online Products
-python main.py \
-  --model deit_small_distilled_patch16_224 \
-  --max-iter 35000 \
-  --dataset sop \
-  --m 2 \
-  --data-path /data/Stanford_Online_Products \
-  --rank 1 10 100 1000 \
-  --lambda-reg 0.7
-```
-
-### [In-shop](https://mmlab.ie.cuhk.edu.hk/projects/DeepFashion/InShopRetrieval.html)
-
-```bash
-# In-shop
-python main.py \
-  --model deit_small_distilled_patch16_224 \
-  --max-iter 35000 \
-  --dataset inshop \
-  --data-path /data/In-shop \
-  --m 2 \
-  --rank 1 10 20 30 \
-  --memory-ratio 0.2 \
-  --device cuda:2 \
-  --encoder-momentum 0.999 \
-  --lambda-reg 0.7
-```
 
 ## Experiments
 
@@ -158,3 +155,4 @@ python main.py \
 ## References
 
 - El-Nouby, Alaaeldin, et al. "Training vision transformers for image retrieval." arXiv preprint arXiv:2102.05644 (2021).
+
