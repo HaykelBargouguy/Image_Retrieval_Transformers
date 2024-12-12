@@ -36,9 +36,11 @@
    pip install -r requirements1.txt
    ```
 
+## Training
+
 5. **Run the Training Script**:
 
-   For example, to train on the CUB-200-2011 dataset:
+   To train on the CUB-200-2011 dataset:
    
    ```bash
    python main.py \
@@ -54,21 +56,6 @@
 
    - After running the training, logs and evaluation results will be stored in the `/logs/` folder. Check this directory for detailed training and evaluation metrics.
 
-## Training
-
-- See `scripts/train.*.sh` for additional examples of training scripts.
-
-### [CUB-200-2011](http://www.vision.caltech.edu/datasets/cub_200_2011/)
-```bash
-# CUB-200-2011
-python main.py \
-  --model deit_small_distilled_patch16_224 \
-  --max-iter 2000 \
-  --dataset cub200 \
-  --data-path /data/CBIR_dataset \
-  --rank 1 2 4 8 \
-  --lambda-reg 0.7
-```
 
 ## Experiments
 
