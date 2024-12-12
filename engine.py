@@ -33,10 +33,10 @@ def train(
     while iteration < args.max_iter:
 
         try:
-            images, targets = _train_loader.next()
+            images, targets =  next(_train_loader)
         except StopIteration:
             _train_loader = iter(data_loader)
-            images, targets = _train_loader.next()
+            images, targets = next(_train_loader)
 
         images = images.to(device)
         targets = targets.to(device)
