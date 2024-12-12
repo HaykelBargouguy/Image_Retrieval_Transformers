@@ -5,22 +5,21 @@
 
 <img src="assets/img.png" height="250px">
 
-## Requirements
-
-```bash
-# Python 3.12.1
-pip install -r requirements1.txt
-```
-
 ## Steps to Run the Project
 
-1. **Create a Virtual Environment**:
+1. **Clone the Repository**:
+
+   ```bash
+   git clone git@github.com:HaykelBargouguy/Image_Retrieval_Transformers.git
+   ```
+
+2. **Create a Virtual Environment**:
 
    ```bash
    python -m venv venv
    ```
 
-2. **Activate the Virtual Environment**:
+3. **Activate the Virtual Environment**:
 
    - On Windows:
      ```bash
@@ -31,13 +30,13 @@ pip install -r requirements1.txt
      source venv/bin/activate
      ```
 
-3. **Install the Required Packages**:
+4. **Install the Required Packages**:
 
    ```bash
    pip install -r requirements1.txt
    ```
 
-4. **Run the Training Script**:
+5. **Run the Training Script**:
 
    For example, to train on the CUB-200-2011 dataset:
    
@@ -51,7 +50,7 @@ pip install -r requirements1.txt
      --lambda-reg 0.7
    ```
 
-5. **Get the Logs and Evaluation Results**:
+6. **Get the Logs and Evaluation Results**:
 
    - After running the training, logs and evaluation results will be stored in the `/logs/` folder. Check this directory for detailed training and evaluation metrics.
 
@@ -68,37 +67,6 @@ python main.py \
   --dataset cub200 \
   --data-path /data/CBIR_dataset \
   --rank 1 2 4 8 \
-  --lambda-reg 0.7
-```
-
-### [Stanford Online Products](https://cvgl.stanford.edu/projects/lifted_struct/)
-
-```bash
-# Stanford Online Products
-python main.py \
-  --model deit_small_distilled_patch16_224 \
-  --max-iter 35000 \
-  --dataset sop \
-  --m 2 \
-  --data-path /data/Stanford_Online_Products \
-  --rank 1 10 100 1000 \
-  --lambda-reg 0.7
-```
-
-### [In-shop](https://mmlab.ie.cuhk.edu.hk/projects/DeepFashion/InShopRetrieval.html)
-
-```bash
-# In-shop
-python main.py \
-  --model deit_small_distilled_patch16_224 \
-  --max-iter 35000 \
-  --dataset inshop \
-  --data-path /data/In-shop \
-  --m 2 \
-  --rank 1 10 20 30 \
-  --memory-ratio 0.2 \
-  --device cuda:2 \
-  --encoder-momentum 0.999 \
   --lambda-reg 0.7
 ```
 
